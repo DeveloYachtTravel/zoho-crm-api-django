@@ -8,11 +8,14 @@ setuptools.setup(
     version="0.0.1",
     author="it.yacht.travel@gmail.com",
     author_email="it.yacht.travel@gmail.com",
-    description="Wrapper for zcrmsdk package with django with ready to use models.",
+    description="Wrapper of zcrmsdk package for django with ready to use models.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/DeveloYachtTravel/zoho-crm-api-django",
     packages=setuptools.find_packages(),
+    install_requires=[
+        'zcrmsdk',
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
