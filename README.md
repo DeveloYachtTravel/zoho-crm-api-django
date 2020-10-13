@@ -4,6 +4,7 @@
 https://github.com/zoho/zcrm-python-sdk
 
 
+```json
 ZOHO_CRM_CONFIG = {
     'apiBaseUrl':'https://www.zohoapis.com',
     'apiVersion':'v2',
@@ -21,3 +22,4 @@ ZOHO_CRM_CONFIG = {
     'mysql_password':DATABASES.get('default').get("PASSWORD"),
     'mysql_port':DATABASES.get('default').get("PORT"),
 }
+```
