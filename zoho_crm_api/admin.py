@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .database.models import AuthToken
+from .django_models import AuthToken
 
 
 @admin.register(AuthToken)

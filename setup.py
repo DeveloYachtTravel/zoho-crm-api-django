@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="zoho_crm_api-develoyachttravel",
-    version="0.0.1",
+    name="zoho_crm_api",
+    version="1.0.1",
     author="it.yacht.travel@gmail.com",
     author_email="it.yacht.travel@gmail.com",
     description="Wrapper of zcrmsdk package for django with ready to use models.",
