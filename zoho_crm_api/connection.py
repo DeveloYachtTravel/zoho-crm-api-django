@@ -1,5 +1,6 @@
 from django.conf import settings
 from .exceptions import ZohoCRMAPIInitializationException
+import pathlib
 import os
 import zcrmsdk
 
@@ -17,7 +18,7 @@ try:
         "accounts_url":"https://accounts.zoho.com",
         "access_type":"online",
         'persistence_handler_class' : 'ZohoCrmPersistence',
-        'persistence_handler_path': os.path.join(os.getcwd(), 'persistance.py')
+        'persistence_handler_path': os.path.join(pathlib.Path(__file__).parent.absolute(), 'persistance.py')
     }
 except AttributeError as ex:
     raise ZohoCRMAPIInitializationException(1,f"Cannot find {ex.args[0]} value")
