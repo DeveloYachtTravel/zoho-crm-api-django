@@ -1,13 +1,13 @@
 # zoho-crm-api-django
 
+### Build on
 
-https://github.com/zoho/zcrm-python-sdk
-
-
-## API Console
+>https://github.com/zoho/zcrm-python-sdk
 
 
-https://api-console.zoho.com/
+## Zoho CRM API Console
+
+>https://api-console.zoho.com/
 
 
 ### Installation
@@ -16,7 +16,11 @@ https://api-console.zoho.com/
 pip install git+https://github.com/DeveloYachtTravel/zoho-crm-api-django.git
 ```
 
-### Config example
+Setting Up
+----------
+
+
+### Django settings
 
 ```python
 # Mandatory
@@ -28,11 +32,17 @@ ZOHO_CRM_API_REDIRECT_URI = ""
 ZOHO_CRM_API_LOGFILE = ""
 ```
 
+### Migrating 
+
+>python manage.py migrate zoho_crm_api
+
 ### First key generating
 
+>python manage.py shell
+
 ```python
-ZCRMRestClient.initialize()
-oauth_client = ZohoOAuth.get_client_instance()
-grant_token="paste_grant_token_here"
-oauth_tokens = oauth_client.generate_access_token(grant_token)
+from zoho_crm_api.api import generate_access_token
+generate_access_token()
+Please, paste grant token: ****************************
+Auth Token created
 ```
