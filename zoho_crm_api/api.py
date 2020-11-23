@@ -145,6 +145,7 @@ class ZOHO_CRM_API():
 
 
 def generate_access_token():
+    from .connection import config
     from .django_models import AuthToken
     from .exceptions import ZohoCRMAPIInitializationException
     from zcrmsdk.RestClient import ZCRMRestClient
@@ -154,7 +155,7 @@ def generate_access_token():
         print("Auth Token exist")
         return
 
-    ZCRMRestClient.initialize()
+    ZCRMRestClient.initialize(config)
     oauth_client = ZohoOAuth.get_client_instance()
     grant_token=input("Please, paste grant token: ")
     oauth_tokens = oauth_client.generate_access_token(grant_token)
