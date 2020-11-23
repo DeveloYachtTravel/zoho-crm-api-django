@@ -1,6 +1,5 @@
 from .conf import MODULES
-
-from django.conf import settings
+from .connection import zcrmsdk
 
 from .exceptions import *
 
@@ -13,10 +12,6 @@ import requests
 from zcrmsdk.CLException import ZCRMException
 from zcrmsdk.Handler import EntityAPIHandler
 from zcrmsdk.Operations import ZCRMRecord
-import zcrmsdk
-
-zcrmsdk.ZCRMRestClient.initialize(settings.ZOHO_CRM_CONFIG)
-
 
 
 class ZOHO_CRM_API():

@@ -4,21 +4,42 @@
 https://github.com/zoho/zcrm-python-sdk
 
 
-```json
+## API Console
+
+```
+https://api-console.zoho.com/
+```
+
+## INSTALLATION
+
+```
+pip install git+https://github.com/DeveloYachtTravel/zoho-crm-api-django.git
+```
+
+## Config example
+
+```python
 ZOHO_CRM_CONFIG = {
     "apiBaseUrl":"https://www.zohoapis.com",
     "apiVersion":"v2",
     "currentUserEmail":"oleg.yacht.travel@gmail.com",
     "sandbox":"False",
     "applicationLogFilePath":"",
-    "client_id":"1000.WM8E4ITHUSRAX9UEISK25T3UH5S1BH",
-    "client_secret":"02db8295eec13ff1043458267775fa32dfa01a7c66",
-    "redirect_uri":"https://office.yacht-travel.club/api/v1/clients_auth/auth",
+    "client_id":"",
+    "client_secret":"",
+    "redirect_uri":"",
     "accounts_url":"https://accounts.zoho.com",
     "access_type":"online",
-    "mysql_username":DATABASES.get("default").get("USER"),
-    "mysql_password":DATABASES.get("default").get("PASSWORD"),
-    "mysql_port":DATABASES.get("default").get("PORT"),
-    "token_persistence_path":"/Users/Zoho/Desktop/PythonSDK/FilePersistence",
+    
+    'persistence_handler_class' : 'Custom',
+    'persistence_handler_path': '/Users/Zoho/Desktop/PythonSDK/CustomPersistance.py'
 }
+
+# Mandatory
+ZOHO_CRM_API_CLIENT_ID = ""
+ZOHO_CRM_API_CLIENT_SECRET = ""
+ZOHO_CRM_API_REDIRECT_URI = ""
+
+# Optional
+ZOHO_CRM_API_LOGFILE = ""
 ```
