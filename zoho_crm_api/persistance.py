@@ -1,4 +1,4 @@
-from .database.models import AuthToken
+from .django_models import AuthToken
 
 from zcrmsdk.OAuthClient import AbstractZohoOAuthPersistence
 from zcrmsdk.OAuthClient import ZohoOAuthTokens

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="zoho_crm_api",
-    version="1.0.2",
+    version="1.0.3",
     author="it.yacht.travel@gmail.com",
     author_email="it.yacht.travel@gmail.com",
     description="Wrapper of zcrmsdk package for django with ready to use models.",
