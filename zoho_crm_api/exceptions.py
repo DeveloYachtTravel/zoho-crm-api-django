@@ -55,6 +55,18 @@ class ZohoCRMAPIException(Exception):
             message += f" Record id:{self.error_record_id}"
         return message
         
+    def __str__(self):
+        return self.get_message()
 
+
+class ZohoCRMAPIInitializationException(Exception):
+    def __init__(self,error_code,error_message):
+        self.error_code = error_code
+        self.error_message = error_message
+
+    def get_message(self):
+        message = f"Crm API Initialization exception. Code:{self.error_code}. Message:{self.error_message}."
+        return message
+        
     def __str__(self):
         return self.get_message()
