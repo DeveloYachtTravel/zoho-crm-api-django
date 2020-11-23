@@ -1,5 +1,6 @@
-from .django_models import AuthToken
-
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
+from zoho_crm_api.django_models import AuthToken
 from zcrmsdk.OAuthClient import AbstractZohoOAuthPersistence
 from zcrmsdk.OAuthClient import ZohoOAuthTokens
 
@@ -18,10 +19,10 @@ class ZohoCrmPersistence(AbstractZohoOAuthPersistence):
 
     def save_oauthtokens(self,oauthtokens):
         self.delete_oauthtokens(oauthtokens.userEmail)
-        auth_token = AuthToken(useridentifier=oAuthTokens.userEmail,
-                                accesstoken=oAuthTokens.accessToken,
-                                refreshtoken=oAuthTokens.refreshToken,
-                                expirytime=oAuthTokens.expiryTime)
+        auth_token = AuthToken(useridentifier=oauthtokens.userEmail,
+                                accesstoken=oauthtokens.accessToken,
+                                refreshtoken=oauthtokens.refreshToken,
+                                expirytime=oauthtokens.expiryTime)
         auth_token.save()
         
     def delete_oauthtokens(self,user_email):
