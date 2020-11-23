@@ -5,7 +5,7 @@
 >https://github.com/zoho/zcrm-python-sdk
 
 
-## Zoho CRM API Console
+### Zoho CRM API Console
 
 >https://api-console.zoho.com/
 
@@ -20,7 +20,7 @@ Setting Up
 ----------
 
 
-### Django settings
+#### Django settings
 
 ```python
 # Mandatory
@@ -32,11 +32,13 @@ ZOHO_CRM_API_REDIRECT_URI = ""
 ZOHO_CRM_API_LOGFILE = ""
 ```
 
-### Migrating 
+#### Migrating 
 
->python manage.py migrate zoho_crm_api
+```python
+python manage.py migrate zoho_crm_api
+```
 
-### First key generating
+#### First key generating
 
 >python manage.py shell
 
