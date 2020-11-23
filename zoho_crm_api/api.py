@@ -35,8 +35,8 @@ class ZOHO_CRM_API():
         try:
             return parser().parse(zcrmsdk.ZCRMModule(self.modules_api_names[module])\
                     .get_record(record_id).response_json)
-        except ZCRMException:
-            raise ZohoCRMAPI_NoRecord_Exception(404,f"Cannot find record in {module} module",module,id)
+        except ZCRMException as ex:
+            raise ZohoCRMAPI_NoRecord_Exception(404,f"Cannot find record in {module} module. Details: {ex.error_message}",module,id)
 
     def _update_module_record(self,module,record,record_id):
         try:
