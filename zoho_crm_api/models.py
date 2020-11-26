@@ -317,6 +317,7 @@ class Group():
         self.crew_members = None
         self.additional_bills = None
         self.additional_expenses = None
+        self.bonus_bill_id = None
 
     def to_json(self):
         group_data = {}
@@ -364,6 +365,7 @@ class Group():
         group_data['Skipper'] = self.skipper
         group_data['additional_bills'] = self.additional_bills
         group_data['additional_expenses1'] = self.additional_expenses
+        group_data['bonus_bill_id'] = self.bonus_bill_id
         return group_data
 
 
