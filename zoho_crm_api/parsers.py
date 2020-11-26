@@ -216,6 +216,7 @@ class Group_parser():
         group.instructor_fee = group_data.get('Instructor_s_fee','')
         group.additional_bills = group_data.get('additional_bills','')
         group.additional_expenses = group_data.get('additional_expenses1','')
+        group.bonus_bill_id = group_data.get('bonus_bill_id',None)
         return group
 
 
