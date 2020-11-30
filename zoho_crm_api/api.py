@@ -32,13 +32,13 @@ class ZOHO_CRM_API():
 
     def _create_module_record(self,module,record):
         try:
-            instance = ZCRMRecord(self.modules_api_names[module],record_id)
+            instance = ZCRMRecord(self.modules_api_names[module])
             entity_api_handler = EntityAPIHandler(instance)
             entity_api_handler.set_record_properties(record.to_json())
             record = entity_api_handler.zcrmrecord
             record.create()
         except ZCRMException as ex:
-            raise ZohoCRMAPIException(ex.status_code,ex.message,module,id)
+            raise ZohoCRMAPIException(ex.status_code,ex.message,module)
 
     def _get_module_record(self,module,record_id):
         parser = self._get_module_parser(self.modules_api_names[module])
