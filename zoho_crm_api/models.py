@@ -319,7 +319,7 @@ class Group():
         self.additional_expenses = None
         self.bonus_bill_id = None
 
-    def to_json(self):
+    def to_json(self,safety=False):
         group_data = {}
         group_data['id'] = self.group_id
         group_data['Name'] = self.group_name
@@ -332,40 +332,41 @@ class Group():
             group_data['finish_time'] = self.finish_date_time.strftime("%Y-%m-%dT%H:%M:%S")   
         group_data['Price'] = self.price
         group_data['Instructor'] = self.instructor
-        group_data['Country'] = self.country
-        group_data['Currency'] = self.currency
-        group_data['Start_base'] = self.start_base
-        group_data['Yacht'] = self.yacht
-        group_data['Yacht_Name'] = self.yacht_name
-        group_data['Model'] = self.model
-        group_data['Yacht_Year'] = self.yacht_year
-        group_data['Operator'] = self.operator
-        group_data['Yacht_netto_price'] = self.net_price
-        group_data['Skipper_fee'] = self.skipper_fee
-        group_data['skipper_fee_bill'] = self.skipper_fee_bill
-        group_data['net_price_bill'] = self.net_price_bill
-        group_data['Agency_commission'] = self.agency_commission
-        group_data['income_fact'] = self.income_fact
-        group_data['base_manager'] = self.base_manager
-        group_data['manager_phone'] = self.managers_phone
-        group_data['pier'] = self.pier
-        group_data['participants_fact'] = self.participant_fact
-        group_data['field8'] = self.participant_plan
-        group_data['Project_ID'] = self.project_id
-        group_data['Instructor_s_fee'] = self.instructor_fee
-        group_data['Catering_and_stationery_for_s'] = self.catering_and_stationery
-        group_data['Automobile_expense'] = self.automobile_expense
-        group_data['automobile_bill_id'] = self.automobile_bill_id
-        group_data['catering_bill_id'] = self.catering_bill_id
-        group_data['instructor_bill_id'] = self.instructor_bill_id
-        group_data['Workdrive_client_folder_url'] = self.workdrive_client_url
-        group_data['Workdrive_folder_url'] = self.workdrive_local_url
-        group_data['Workdrive_folder_id'] = self.workdrive_folder_id
-        group_data['Workdrive_password'] = self.workdrive_folder_password
         group_data['Skipper'] = self.skipper
-        group_data['additional_bills'] = self.additional_bills
-        group_data['additional_expenses1'] = self.additional_expenses
-        group_data['bonus_bill_id'] = self.bonus_bill_id
+        if not safety:
+            group_data['Country'] = self.country
+            group_data['Currency'] = self.currency
+            group_data['Start_base'] = self.start_base
+            group_data['Yacht'] = self.yacht
+            group_data['Yacht_Name'] = self.yacht_name
+            group_data['Model'] = self.model
+            group_data['Yacht_Year'] = self.yacht_year
+            group_data['Operator'] = self.operator
+            group_data['Yacht_netto_price'] = self.net_price
+            group_data['Skipper_fee'] = self.skipper_fee
+            group_data['skipper_fee_bill'] = self.skipper_fee_bill
+            group_data['net_price_bill'] = self.net_price_bill
+            group_data['Agency_commission'] = self.agency_commission
+            group_data['income_fact'] = self.income_fact
+            group_data['base_manager'] = self.base_manager
+            group_data['manager_phone'] = self.managers_phone
+            group_data['pier'] = self.pier
+            group_data['participants_fact'] = self.participant_fact
+            group_data['field8'] = self.participant_plan
+            group_data['Project_ID'] = self.project_id
+            group_data['Instructor_s_fee'] = self.instructor_fee
+            group_data['Catering_and_stationery_for_s'] = self.catering_and_stationery
+            group_data['Automobile_expense'] = self.automobile_expense
+            group_data['automobile_bill_id'] = self.automobile_bill_id
+            group_data['catering_bill_id'] = self.catering_bill_id
+            group_data['instructor_bill_id'] = self.instructor_bill_id
+            group_data['Workdrive_client_folder_url'] = self.workdrive_client_url
+            group_data['Workdrive_folder_url'] = self.workdrive_local_url
+            group_data['Workdrive_folder_id'] = self.workdrive_folder_id
+            group_data['Workdrive_password'] = self.workdrive_folder_password
+            group_data['additional_bills'] = self.additional_bills
+            group_data['additional_expenses1'] = self.additional_expenses
+            group_data['bonus_bill_id'] = self.bonus_bill_id
         return group_data
 
 

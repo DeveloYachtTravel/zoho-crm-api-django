@@ -13,7 +13,7 @@
 ### Installation
 
 ```
-pip install git+https://github.com/DeveloYachtTravel/zoho-crm-api-django.git
+pip install --upgrade git+https://github.com/DeveloYachtTravel/zoho-crm-api-django.git
 ```
 
 Setting Up
