@@ -32,7 +32,7 @@ class ZOHO_CRM_API():
 
     def _create_module_record(self,module,record):
         try:
-            instance = ZCRMRecord(self.modules_api_names[module])
+            instance = ZCRMRecord(self.modules_api_names[module],None)
             entity_api_handler = EntityAPIHandler(instance)
             entity_api_handler.set_record_properties(record.to_json())
             record = entity_api_handler.zcrmrecord
