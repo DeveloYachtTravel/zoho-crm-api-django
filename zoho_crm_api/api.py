@@ -92,7 +92,7 @@ class ZOHO_CRM_API():
         self._create_module_record("Leads",lead)
 
     def update_lead(self,lead):
-        self._update_module_record("Leads",lead)  
+        self._update_module_record("Leads",lead,lead.lead_id)  
 
     def get_contact(self,id:str):
         return self._get_module_record("Contacts",id)     
