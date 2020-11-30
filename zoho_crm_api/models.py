@@ -333,15 +333,17 @@ class Group():
         group_data['Price'] = self.price
         group_data['Instructor'] = self.instructor
         group_data['Skipper'] = self.skipper
+        group_data['Country'] = self.country
+        group_data['Currency'] = self.currency
+        group_data['Start_base'] = self.start_base
+        group_data['Yacht'] = self.yacht
+        group_data['Yacht_Name'] = self.yacht_name
+        group_data['Model'] = self.model
+        group_data['Yacht_Year'] = self.yacht_year
+        group_data['Operator'] = self.operator
+        group_data['participants_fact'] = self.participant_fact
+        group_data['field8'] = self.participant_plan
         if not safety:
-            group_data['Country'] = self.country
-            group_data['Currency'] = self.currency
-            group_data['Start_base'] = self.start_base
-            group_data['Yacht'] = self.yacht
-            group_data['Yacht_Name'] = self.yacht_name
-            group_data['Model'] = self.model
-            group_data['Yacht_Year'] = self.yacht_year
-            group_data['Operator'] = self.operator
             group_data['Yacht_netto_price'] = self.net_price
             group_data['Skipper_fee'] = self.skipper_fee
             group_data['skipper_fee_bill'] = self.skipper_fee_bill
@@ -351,8 +353,6 @@ class Group():
             group_data['base_manager'] = self.base_manager
             group_data['manager_phone'] = self.managers_phone
             group_data['pier'] = self.pier
-            group_data['participants_fact'] = self.participant_fact
-            group_data['field8'] = self.participant_plan
             group_data['Project_ID'] = self.project_id
             group_data['Instructor_s_fee'] = self.instructor_fee
             group_data['Catering_and_stationery_for_s'] = self.catering_and_stationery
