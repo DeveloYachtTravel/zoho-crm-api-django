@@ -30,6 +30,16 @@ class ZOHO_CRM_API():
         }
         return parsers.get(module)
 
+    def _create_module_record(self,module,record):
+        try:
+            instance = ZCRMRecord(self.modules_api_names[module],record_id)
+            entity_api_handler = EntityAPIHandler(instance)
+            entity_api_handler.set_record_properties(record.to_json())
+            record = entity_api_handler.zcrmrecord
+            record.create()
+        except ZCRMException as ex:
+            raise ZohoCRMAPIException(ex.status_code,ex.message,module,id)
+
     def _get_module_record(self,module,record_id):
         parser = self._get_module_parser(self.modules_api_names[module])
         try:
@@ -51,11 +61,17 @@ class ZOHO_CRM_API():
     def get_deal(self,id:str):
         return self._get_module_record("Deals",id)
 
+    def create_deal(self,deal):
+        self._create_module_record("Deals",deal)
+
     def update_deal(self,deal):
         self._update_module_record("Deals",deal,deal.deal_id)
 
     def get_group(self,id:str):
         return self._get_module_record("Groups",id)
+
+    def create_group(self,group):
+        self._create_module_record("Groups",group)
 
     def update_group(self,group):
         self._update_module_record("Groups",group,group.group_id)
@@ -63,11 +79,26 @@ class ZOHO_CRM_API():
     def get_co_worker(self,id:str):
         return self._get_module_record("Co-workers",id)
 
+    def create_co_worker(self,co_worker):
+        self._create_module_record("Co-workers",co_worker)
+
     def update_co_worker(self,co_worker):
-        self._update_module_record("Co-workers",co_worker,co_worker.co_worker_id)     
+        self._update_module_record("Co-workers",co_worker,co_worker.co_worker_id)   
+
+    def get_lead(self,id:str):
+        return self._get_module_record("Leads",id)
+
+    def create_lead(self,lead):
+        self._create_module_record("Leads",lead)
+
+    def update_lead(self,lead):
+        self._update_module_record("Leads",lead,lead.lead_id)  
 
     def get_contact(self,id:str):
         return self._get_module_record("Contacts",id)     
+
+    def create_contact(self,contact):
+        self._create_module_record("Contacts",contact)
 
     def update_contact(self,contact):
         self._update_module_record("Contacts",contact,contact.contact_id)
