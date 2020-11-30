@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             name='AuthToken',
             fields=[
                 ('useridentifier',models.EmailField(primary_key=True)),
-                ('accesstoken', models.CharField(blank=True, max_length=100)),
-                ('refreshtoken', models.CharField(blank=True, max_length=100)),
+                ('accesstoken', models.CharField(max_length=100)),
+                ('refreshtoken', models.CharField(max_length=100)),
                 ('expirytime', models.BigIntegerField())
             ],
         ),
