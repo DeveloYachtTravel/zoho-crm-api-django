@@ -391,6 +391,7 @@ class Lead():
         self.product_type = None
         self.communication_channel = None
         self.owner = None
+        self.request_url = None
 
     def to_json(self):
         data = {}
@@ -414,6 +415,7 @@ class Lead():
         data['Other_phone'] = self.third_phone
         data['comun_ch'] = self.communication_channel
         data['Owner'] = self.owner
+        data['Request_url'] = self.request_url
         return data
 
 
