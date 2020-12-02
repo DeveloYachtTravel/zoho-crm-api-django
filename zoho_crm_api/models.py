@@ -172,6 +172,7 @@ class Deal():
         self.skipper_outcome = None
         self.skipper_vendor_id = None
         self.lead_source = None
+        self.communication_channel = None
 
     def to_json(self):
         from datetime import datetime
@@ -254,6 +255,7 @@ class Deal():
         deal_data['Skipper_outcome'] = self.skipper_outcome
         deal_data['skipper_vendor_id'] = self.skipper_vendor_id
         deal_data['Lead_Sources'] = self.lead_source
+        deal_data['Channel'] = self.communication_channel
         return deal_data
 
 
