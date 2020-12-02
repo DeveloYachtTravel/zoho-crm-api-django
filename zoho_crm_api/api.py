@@ -30,7 +30,7 @@ class ZOHO_CRM_API():
         }
         return parsers.get(module)
 
-    def _create_module_record(self,module,record):
+    def _create_module_record(self,module,record)->None:
         try:
             instance = ZCRMRecord(self.modules_api_names[module],None)
             entity_api_handler = EntityAPIHandler(instance)
@@ -40,7 +40,7 @@ class ZOHO_CRM_API():
         except ZCRMException as ex:
             raise ZohoCRMAPIException(ex.status_code,ex.message,module)
 
-    def _get_module_record(self,module,record_id):
+    def _get_module_record(self,module,record_id)->ZCRMRecord:
         parser = self._get_module_parser(self.modules_api_names[module])
         try:
             return parser().parse(zcrmsdk.ZCRMModule(self.modules_api_names[module])\
@@ -48,7 +48,7 @@ class ZOHO_CRM_API():
         except ZCRMException as ex:
             raise ZohoCRMAPI_NoRecord_Exception(404,f"Cannot find record in {module} module. Details: {ex.error_message}",module,id)
 
-    def _update_module_record(self,module,record,record_id):
+    def _update_module_record(self,module,record,record_id)->None:
         try:
             instance = ZCRMRecord(self.modules_api_names[module],record_id)
             entity_api_handler = EntityAPIHandler(instance)
@@ -87,6 +87,13 @@ class ZOHO_CRM_API():
 
     def get_lead(self,id:str):
         return self._get_module_record("Leads",id)
+
+    def convert_lead(self,lead):
+        instance = ZCRMRecord(self.modules_api_names["Leads"],lead.lead_id)
+        entity_api_handler = EntityAPIHandler(instance)
+        entity_api_handler.set_record_properties(lead.to_json())
+        record = entity_api_handler.zcrmrecord
+        return record.convert()
 
     def create_lead(self,lead):
         self._create_module_record("Leads",lead)
