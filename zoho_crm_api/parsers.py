@@ -88,6 +88,7 @@ class Deal_parser():
         deal.products = deal_data.get('Products_deal',None)
         deal.amount = deal_data.get('Amount',None)
         deal.currency_amount = deal_data.get('Currency_amount',None)
+        deal.lead_source = deal_data.get('Lead_Sources',None)
         if isinstance(deal_data.get('Group'),dict):
             deal.group = deal_data.get('Group').get("id")
         elif isinstance(deal_data.get('Group'),str):
