@@ -11,7 +11,7 @@ import requests
 
 from zcrmsdk.CLException import ZCRMException
 from zcrmsdk.Handler import EntityAPIHandler
-from zcrmsdk.Operations import ZCRMRecord
+from zcrmsdk.Operations import ZCRMRecord, ZCRMUser
 from zcrmsdk.RestClient import ZCRMRestClient, ZCRMOrganization
 
 
@@ -169,8 +169,7 @@ class ZOHO_CRM_API():
     # Additional
 
     def get_crm_user(self,user_id):
-        organization = ZCRMRestClient().get_organization_instance()
-        return organization.get_user(user_id)
+        return ZCRMUser.get_instance(user_id, None)
 
     def get_group_fields(self):
         return zcrmsdk.ZCRMModule(self.modules_api_names["Groups"]).get_all_fields().response_json['fields']
