@@ -12,6 +12,7 @@ import requests
 from zcrmsdk.CLException import ZCRMException
 from zcrmsdk.Handler import EntityAPIHandler
 from zcrmsdk.Operations import ZCRMRecord
+from zcrmsdk.RestClient import ZCRMRestClient, ZCRMOrganization
 
 
 class ZOHO_CRM_API():
@@ -88,12 +89,12 @@ class ZOHO_CRM_API():
     def get_lead(self,id:str):
         return self._get_module_record("Leads",id)
 
-    def convert_lead(self,lead):
+    def convert_lead(self,lead,assign_to_user):
         instance = ZCRMRecord(self.modules_api_names["Leads"],lead.lead_id)
         entity_api_handler = EntityAPIHandler(instance)
         entity_api_handler.set_record_properties(lead.to_json())
         record = entity_api_handler.zcrmrecord
-        return record.convert()
+        return record.convert(assign_to_user=assign_to_user)
 
     def create_lead(self,lead):
         self._create_module_record("Leads",lead)
@@ -166,6 +167,10 @@ class ZOHO_CRM_API():
         return self.get_related_records("Deals","Contacts",contact_id)
 
     # Additional
+
+    def get_crm_user(self,user_id):
+        organization = ZCRMRestClient().get_organization_instance()
+        return organization.get_user(user_id)
 
     def get_group_fields(self):
         return zcrmsdk.ZCRMModule(self.modules_api_names["Groups"]).get_all_fields().response_json['fields']

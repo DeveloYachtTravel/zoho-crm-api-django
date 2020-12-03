@@ -7,3 +7,6 @@ MODULES = {
     "Contacts":"Contacts"
 }
 
+ORGANISATION = {
+    
+}
