@@ -159,11 +159,14 @@ class ZOHO_CRM_API():
     # Searching
 
     def search_by_criteria(self,module,criteria,page=1,per_page=200):
-        module = self.modules_api_names[module]
-        parser = self._get_module_parser(module)
-        response = zcrmsdk.ZCRMModule(module).\
-            search_records_by_criteria(criteria,page=page,per_page=per_page).response_json['data']
-        return [parser().parse(record) for record in response]
+        try:
+            module = self.modules_api_names[module]
+            parser = self._get_module_parser(module)
+            response = zcrmsdk.ZCRMModule(module).\
+                search_records_by_criteria(criteria,page=page,per_page=per_page).response_json['data']
+            return [parser().parse(record) for record in response]
+        except ZCRMException as ex:
+            raise ZohoCRMAPIException(ex.error_code,ex.error_message,module,error_details=ex.error_details)
 
     def search_by_phone(self,module,phone,page=1,per_page=200):
         module = self.modules_api_names[module]
