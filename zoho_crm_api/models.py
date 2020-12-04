@@ -184,6 +184,7 @@ class Deal():
         deal_data['Stage'] = self.stage
         deal_data['Products_deal'] = self.products
         deal_data['Amount'] = self.amount
+        deal_data['Currency'] = self.currency
         deal_data['Currency_amount'] = self.currency_amount
         deal_data['Discount'] = self.discount
         deal_data['Group'] = self.group
