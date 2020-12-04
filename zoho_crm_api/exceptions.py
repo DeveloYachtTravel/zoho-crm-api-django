@@ -43,14 +43,15 @@ class ZohoCRMAPI_ProjectCreate_Exception(Exception):
 
 
 class ZohoCRMAPIException(Exception):
-    def __init__(self,error_code,error_message,error_module,error_record_id=None):
+    def __init__(self,error_code,error_message,error_module,error_record_id=None,error_details=None):
         self.error_code = error_code
         self.error_message = error_message
         self.error_module = error_module
         self.error_record_id = error_record_id
+        self.error_details = error_details
 
     def get_message(self):
-        message = f"Crm API exception. Code:{self.error_code}. Message:{self.error_message}. Module: {self.error_module}."
+        message = f"Crm API exception. Code:{self.error_code}. Message:{self.error_message}. Module: {self.error_module}. Details: {self.error_details}"
         if self.error_record_id:
             message += f" Record id:{self.error_record_id}"
         return message
