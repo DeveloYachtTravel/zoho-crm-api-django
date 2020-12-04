@@ -5,14 +5,18 @@ from .exceptions import *
 
 import json
 
+import traceback
+
 from .parsers import Group_parser, Deal_parser, Co_worker_parser, Contact_parser, Lead_parser
 
 import requests
 
 from zcrmsdk.CLException import ZCRMException
 from zcrmsdk.Handler import EntityAPIHandler
+from zcrmsdk.Handler import APIHandler, APIRequest
 from zcrmsdk.Operations import ZCRMRecord, ZCRMUser
 from zcrmsdk.RestClient import ZCRMRestClient, ZCRMOrganization
+from zcrmsdk.Utility import CommonUtil, APIConstants
 
 
 class ZOHO_CRM_API():
@@ -89,12 +93,53 @@ class ZOHO_CRM_API():
     def get_lead(self,id:str):
         return self._get_module_record("Leads",id)
 
-    def convert_lead(self,lead,assign_to_user):
-        instance = ZCRMRecord(self.modules_api_names["Leads"],lead.lead_id)
-        entity_api_handler = EntityAPIHandler(instance)
-        entity_api_handler.set_record_properties(lead.to_json())
-        record = entity_api_handler.zcrmrecord
-        return record.convert(assign_to_user=assign_to_user)
+    def convert_lead(self,lead,potential_record=None,assign_to_user=None,contact=None):
+        try:
+            lead_instance = ZCRMRecord(self.modules_api_names["Leads"],lead.lead_id)
+            entity_api_handler = EntityAPIHandler(lead_instance)
+            entity_api_handler.set_record_properties(lead.to_json())
+            record = entity_api_handler.zcrmrecord
+
+            return self._convert_record(record, potential_record=potential_record, 
+                                    assign_to_user=assign_to_user,contact=contact)
+        except ZCRMException as ex:
+            raise ZohoCRMAPIException(ex.error_code,ex.error_message,"Leads",error_details=ex.error_details)
+
+    def _convert_record(self,record,potential_record,assign_to_user,contact):
+        try:
+            handler_ins=APIHandler()
+            handler_ins.request_url_path=record.module_api_name+"/"+str(record.entity_id)+"/actions/convert"
+            handler_ins.request_method=APIConstants.REQUEST_METHOD_POST
+            handler_ins.request_api_key=APIConstants.DATA
+            input_json=dict()
+            if assign_to_user is not None:
+                input_json['assign_to']=assign_to_user.id
+            if potential_record is not None:
+                input_json['Deals']=potential_record.to_json()
+            if contact is not None:
+                input_json['Contacts']=contact.contact_id
+            if(assign_to_user is not None or potential_record is not None or contact is not None):
+                inputJsonArr=list()
+                inputJsonArr.append(input_json)
+                reqBodyJson=dict()
+                reqBodyJson[APIConstants.DATA]=inputJsonArr
+                handler_ins.request_body=reqBodyJson
+            api_response=APIRequest(handler_ins).get_api_response()
+            converted_dict=dict()
+            convertedIdsJson=api_response.response_json[APIConstants.DATA][0]
+            if APIConstants.CONTACTS in convertedIdsJson and convertedIdsJson[APIConstants.CONTACTS] is not None:
+                converted_dict[APIConstants.CONTACTS]=convertedIdsJson[APIConstants.CONTACTS]
+            if APIConstants.ACCOUNTS in convertedIdsJson and convertedIdsJson[APIConstants.ACCOUNTS] is not None:
+                converted_dict[APIConstants.ACCOUNTS]=convertedIdsJson[APIConstants.ACCOUNTS]
+            if APIConstants.DEALS in convertedIdsJson and convertedIdsJson[APIConstants.DEALS] is not None:
+                converted_dict[APIConstants.DEALS]=convertedIdsJson[APIConstants.DEALS]
+            
+            return converted_dict
+        except ZCRMException as ex:
+            ex.message = 'Error occurred for {url}. Error Code: {code} Response error_content: {error_content}. Error Details::{error_details}'
+            raise ex
+        except Exception as ex:
+            CommonUtil.raise_exception(handler_ins.request_url_path,ex.__str__(),traceback.format_stack())
 
     def create_lead(self,lead):
         self._create_module_record("Leads",lead)
