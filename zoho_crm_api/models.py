@@ -397,6 +397,7 @@ class Lead():
         self.communication_channel = None
         self.owner = None
         self.request_url = None
+        self.group_url = None
 
     def to_json(self):
         data = {}
@@ -421,6 +422,7 @@ class Lead():
         data['comun_ch'] = self.communication_channel
         data['Owner'] = self.owner
         data['Request_url'] = self.request_url
+        data['Group_url'] = self.group_url
         return data
 
 

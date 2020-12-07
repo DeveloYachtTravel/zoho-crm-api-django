@@ -247,6 +247,7 @@ class Lead_parser():
         lead.communication_channel = lead_data.get('comun_ch',None)
         lead.owner = lead_data.get('Owner',None)
         lead.request_url = lead_data.get('Request_url',None)
+        lead.group_url = lead_data.get('Group_url',None)
         return lead
 
 
