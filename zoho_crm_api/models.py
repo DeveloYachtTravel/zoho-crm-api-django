@@ -168,6 +168,7 @@ class Deal():
         self.third_transfer_amount = None
         self.commission_summ = None
         self.skipper_deal_id = None
+        self.skipper_name = None
         self.skipper_income = None
         self.skipper_outcome = None
         self.skipper_vendor_id = None
