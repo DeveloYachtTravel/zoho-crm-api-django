@@ -153,7 +153,7 @@ class Deal_parser():
         deal.third_transfer_amount = deal_data.get('Amount_of_3rd_transfer',None)
         deal.commission_summ = deal_data.get('Commission_summ',None)
         deal.skipper_deal_id = deal_data.get('skipper_deal_id',None)
-
+        deal.skipper_name = deal_data.get('Skipper_name',None)
         deal.skipper_income = deal_data.get('Skipper_income',None)
         deal.skipper_outcome = deal_data.get('Skipper_outcome',None)
         deal.skipper_vendor_id = deal_data.get('skipper_vendor_id',None)
