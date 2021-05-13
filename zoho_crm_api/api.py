@@ -67,7 +67,7 @@ class ZOHO_CRM_API():
         return self._get_module_record("Deals",id)
 
     def create_deal(self,deal):
-        self._create_module_record("Deals",deal)
+        return self._create_module_record("Deals",deal)
 
     def update_deal(self,deal):
         self._update_module_record("Deals",deal,deal.deal_id)
@@ -76,7 +76,7 @@ class ZOHO_CRM_API():
         return self._get_module_record("Groups",id)
 
     def create_group(self,group):
-        self._create_module_record("Groups",group)
+        return self._create_module_record("Groups",group)
 
     def update_group(self,group):
         self._update_module_record("Groups",group,group.group_id)
@@ -85,7 +85,7 @@ class ZOHO_CRM_API():
         return self._get_module_record("Co-workers",id)
 
     def create_co_worker(self,co_worker):
-        self._create_module_record("Co-workers",co_worker)
+        return self._create_module_record("Co-workers",co_worker)
 
     def update_co_worker(self,co_worker):
         self._update_module_record("Co-workers",co_worker,co_worker.co_worker_id)   
@@ -142,7 +142,7 @@ class ZOHO_CRM_API():
             CommonUtil.raise_exception(handler_ins.request_url_path,ex.__str__(),traceback.format_stack())
 
     def create_lead(self,lead):
-        self._create_module_record("Leads",lead)
+        return self._create_module_record("Leads",lead)
 
     def update_lead(self,lead):
         self._update_module_record("Leads",lead,lead.lead_id)  
@@ -151,7 +151,7 @@ class ZOHO_CRM_API():
         return self._get_module_record("Contacts",id)     
 
     def create_contact(self,contact):
-        self._create_module_record("Contacts",contact)
+        return self._create_module_record("Contacts",contact)
 
     def update_contact(self,contact):
         self._update_module_record("Contacts",contact,contact.contact_id)
