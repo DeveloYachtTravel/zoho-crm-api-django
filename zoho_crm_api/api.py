@@ -42,6 +42,7 @@ class ZOHO_CRM_API():
             entity_api_handler.set_record_properties(record.to_json())
             record = entity_api_handler.zcrmrecord
             record.create()
+            return record.entity_id
         except ZCRMException as ex:
             raise ZohoCRMAPIException(ex.status_code,ex.message,module)
 
