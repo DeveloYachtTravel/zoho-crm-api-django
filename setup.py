@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/DeveloYachtTravel/zoho-crm-api-django",
     packages=setuptools.find_packages(),
     install_requires=[
-        'zcrmsdk',
+        'zcrmsdk==2.0.11',
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
