@@ -7,7 +7,7 @@ import json
 
 import traceback
 
-from .parsers import Group_parser, Deal_parser, Co_worker_parser, Contact_parser, Lead_parser
+from .parsers import Group_parser, Deal_parser, Co_worker_parser, Contact_parser, Lead_parser, Operator_parser
 
 import requests
 
@@ -32,6 +32,7 @@ class ZOHO_CRM_API():
             "Co_workers":Co_worker_parser,
             "Visits":None,
             "Contacts":Contact_parser,
+            "Vendors":Operator_parser,
         }
         return parsers.get(module)
 
