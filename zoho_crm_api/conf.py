@@ -4,7 +4,8 @@ MODULES = {
     "Groups":"Groups",
     "Co-workers":"Co_workers",
     "Visits":"Visits",
-    "Contacts":"Contacts"
+    "Contacts":"Contacts",
+    "Operators":"Vendors"
 }
 
 ORGANISATION = {
