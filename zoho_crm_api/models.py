@@ -56,7 +56,7 @@ class Contact():
         data['Third_Email'] = self.third_email
         data['moodle_id'] = self.moodle_id
         if self.moodle_last_access:
-            data['Moodle_last_access'] = self.moodle_last_access.strftime("%Y-%m-%dT%H:%M:%S") 
+            data['Moodle_last_access'] = self.moodle_last_access.strftime("%Y-%m-%dT%H:%M:%S")
         data['Moodle_progress_percent'] = self.moodle_percent
         data['telegram_user_id'] = self.telegram_user_id
         data['Telegram_link'] = self.telegram_link
@@ -174,6 +174,7 @@ class Deal():
         self.skipper_vendor_id = None
         self.lead_source = None
         self.communication_channel = None
+        self.description = None
 
     def to_json(self):
         from datetime import datetime
@@ -258,6 +259,7 @@ class Deal():
         deal_data['skipper_vendor_id'] = self.skipper_vendor_id
         deal_data['Lead_Sources'] = self.lead_source
         deal_data['Channel'] = self.communication_channel
+        deal_data['Description'] = self.description
         return deal_data
 
 
@@ -274,7 +276,7 @@ class Envelope():
         envelope_data['Name'] = self.envelope_name
         envelope_data['Verificated'] = self.verificated
         if self.created_at:
-            envelope_data['Created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S") 
+            envelope_data['Created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S")
         return envelope_data
 
 
@@ -333,9 +335,9 @@ class Group():
         group_data['Status'] = self.status
         group_data['Product_type'] = self.product_type
         if self.start_date_time:
-            group_data['Start_date'] =  self.start_date_time.strftime("%Y-%m-%dT%H:%M:%S") 
+            group_data['Start_date'] =  self.start_date_time.strftime("%Y-%m-%dT%H:%M:%S")
         if self.finish_date_time:
-            group_data['finish_time'] = self.finish_date_time.strftime("%Y-%m-%dT%H:%M:%S")   
+            group_data['finish_time'] = self.finish_date_time.strftime("%Y-%m-%dT%H:%M:%S")
         group_data['Price'] = self.price
         group_data['Instructor'] = self.instructor
         group_data['Skipper'] = self.skipper
@@ -409,10 +411,10 @@ class Lead():
         data['Email'] = self.email
         data['Second_email'] = self.second_email
         data['Third_Email'] = self.third_email
-        data['Referrer'] = self.referrer 
+        data['Referrer'] = self.referrer
         data['moodle_id'] = self.moodle_id
         if self.moodle_last_access:
-            data['Moodle_last_access'] = self.moodle_last_access.strftime("%Y-%m-%dT%H:%M:%S") 
+            data['Moodle_last_access'] = self.moodle_last_access.strftime("%Y-%m-%dT%H:%M:%S")
         data['Moodle_progress_percent'] = self.moodle_percent
         data['City'] = self.city
         data['Product_type'] = self.product_type
@@ -458,7 +460,7 @@ class Event():
     def to_json(self):
         from datetime import datetime
         data = {}
-        data['Deal_related'] = self.deal        
+        data['Deal_related'] = self.deal
         data['Contact'] = self.contact
         if self.event_time and isinstance(self.event_time,datetime):
             data['Event_time'] = datetime.strftime(self.event_time,"%Y-%m-%dT%H:%M:%S")
@@ -502,7 +504,7 @@ class Transaction():
             transaction_data['Exchange_Rate'] = self.expense_account
         transaction_data['Envelope'] = self.envelope
         if self.created_at:
-            transaction_data['Created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S") 
+            transaction_data['Created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S")
         transaction_data['Comment'] = self.comment
         transaction_data['Approved'] = self.approved
         transaction_data['deal_id'] = self.deal_id
