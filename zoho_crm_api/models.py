@@ -240,6 +240,10 @@ class Deal():
         deal_data['books_bonus_bill_id'] = self.books_bonus_bill_id
         deal_data['books_license_instructor_bill_id'] = self.books_license_instructor_bill_id
 
+        if self.skipper == True
+            dela_data['skipper'] = 'need' 
+        elif self.skipper == False
+            dela_data['skipper'] = 'don\'t need'
         if self.first_payment_date:
             deal_data['Date_of_1st_payment'] = self.first_payment_date.strftime("%Y-%m-%d")
         deal_data['Amount_of_1st_payment'] =self.first_payment_amount
