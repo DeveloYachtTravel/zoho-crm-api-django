@@ -42,6 +42,8 @@ class Contact():
         self.telegram_level = None
         self.workdrive_link = None
         self.workdrive_folder_id = None
+        self.country = None
+        self.city = None
 
     def to_json(self):
         data = {}
@@ -63,6 +65,8 @@ class Contact():
         data['telegram_user_level'] = self.telegram_level
         data['Workdrive_link'] = self.workdrive_link
         data['workdrive_folder_id'] = self.workdrive_folder_id
+        data['Country1'] = self.country
+        data['City1'] = self.city
         return data
 
 
