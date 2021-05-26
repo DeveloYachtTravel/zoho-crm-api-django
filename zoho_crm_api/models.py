@@ -44,6 +44,7 @@ class Contact():
         self.workdrive_folder_id = None
         self.country = None
         self.city = None
+        self.owner = None
 
     def to_json(self):
         data = {}
@@ -67,6 +68,7 @@ class Contact():
         data['workdrive_folder_id'] = self.workdrive_folder_id
         data['Country1'] = self.country
         data['City1'] = self.city
+        data['Owner'] = self.owner
         return data
 
 
