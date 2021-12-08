@@ -182,6 +182,8 @@ class Deal():
         self.lead_source = None
         self.communication_channel = None
         self.description = None
+        self.campaign_name = None
+
 
     def to_json(self):
         from datetime import datetime
@@ -271,6 +273,7 @@ class Deal():
         deal_data['Lead_Sources'] = self.lead_source
         deal_data['Channel'] = self.communication_channel
         deal_data['Description'] = self.description
+        deal_data['Campaign_Name'] = self.campaign_name
         return deal_data
 
 

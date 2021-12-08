@@ -6,14 +6,14 @@ def parse_datetime(date):
             date_time_obj = datetime.strptime(date[:19], '%Y-%m-%dT%H:%M:%S')
             return date_time_obj
         else:
-            return date 
+            return date
 
 def parse_date(date):
         if type(date) == str:
             date_time_obj = datetime.strptime(date, '%Y-%m-%d')
             return date_time_obj
         else:
-            return date 
+            return date
 
 class Co_worker_parser():
     def parse(self,worker_data):
@@ -157,8 +157,10 @@ class Deal_parser():
         deal.skipper_income = deal_data.get('Skipper_income',None)
         deal.skipper_outcome = deal_data.get('Skipper_outcome',None)
         deal.skipper_vendor_id = deal_data.get('skipper_vendor_id',None)
+        deal.campaign_name = deal_data.get('Campaign_Name',None)
+
         return deal
-   
+
 
 class Envelope_parser():
     def parse(self,envelope_data):
@@ -170,7 +172,7 @@ class Envelope_parser():
         return envelope
 
 
-class Group_parser():        
+class Group_parser():
     def parse(self,group_data):
         if group_data.get("data"):
             group_data = group_data.get('data')[0]
